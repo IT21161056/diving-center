@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans text-gray-900 bg-white;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold text-blue-950;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply container mx-auto px-4 md:px-6 lg:px-8;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24 relative;
+  }
+  
+  /* Section break decorative elements */
+  .section-padding::before {
+    content: '';
+    @apply absolute left-0 right-0 h-16 -top-8;
+    background: linear-gradient(to right bottom, transparent 49%, currentColor 50%);
+    opacity: 0.1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+  }
+
+  .section-padding::after {
+    content: '';
+    @apply absolute left-0 right-0 h-16 -bottom-8;
+    background: linear-gradient(to left bottom, transparent 49%, currentColor 50%);
+    opacity: 0.1;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+
+  /* Disable section break decorations for specific sections */
+  #home::before,
+  #home::after,
+  footer::before,
+  footer::after {
+    display: none;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg 
+           transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105;
+  }
+  
+  .btn-secondary {
+    @apply bg-teal-500 hover:bg-teal-600 text-white font-medium py-3 px-6 rounded-lg 
+           transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-12 text-center text-blue-950;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-800 to-teal-400 bg-clip-text text-transparent;
+  }
+}
+
+/* Animation utilities */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-blue-50;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-blue-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-blue-400;
+}
